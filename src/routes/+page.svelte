@@ -7,13 +7,16 @@
 
 	const handleSubmit = async () => {
 		const inputLink = document.getElementById('link-input').value;
-		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/.+$/;
+		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[^?#\/]+\/status\/(\d+)$/;
 
 		if (twitterRegex.test(inputLink)) {
+			const tweetId = inputLink.match(twitterRegex)[2];
+
 			try {
 				const retweetsCollectionRef = collection(db, 'retweets');
 				await addDoc(retweetsCollectionRef, {
-					link: inputLink,
+					link: `https://twitter.com/i/web/status/${tweetId}`,
+					tweetId,
 					createdAt: new Date()
 				});
 
@@ -23,7 +26,9 @@
 				alert('Error adding Retweet');
 			}
 		} else {
-			alert('Please enter a valid Twitter link');
+			alert(
+				`Please enter a valid Twitter link. Make sure it contains the tweet id and not include the query parameters after '?'`
+			);
 		}
 	};
 
