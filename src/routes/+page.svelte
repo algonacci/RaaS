@@ -62,14 +62,16 @@
 		<p>👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇</p>
 		{#each retweets as retweet}
 			<div class="retweet-container">
-			      <p><a href={retweet.link} target="_blank" rel="noopener">{retweet.link}</a></p>
-			      <a
-				class="retweet-button"
-				href={retweet.link.includes('/status/') ? `https://twitter.com/intent/retweet?tweet_id=${retweet.link.split('/status/')[1]}` : '#'}
-				target="_blank"
-				rel="noopener"
-			      >Retweet</a>
-    			</div>
+				<p><a href={retweet.link} target="_blank" rel="noopener">{retweet.link}</a></p>
+				<a
+					class="retweet-button"
+					href={retweet.link.includes('/status/')
+						? `https://twitter.com/intent/retweet?tweet_id=${retweet.link.split('/status/')[1]}`
+						: '#'}
+					target="_blank"
+					rel="noopener">Retweet</a
+				>
+			</div>
 		{/each}
 	</div>
 </div>
@@ -167,15 +169,6 @@
 		color: #1da1f2;
 	}
 
-	.retweet-link {
-		color: #fff;
-		text-decoration: none;
-	}
-
-	.retweet-link:hover {
-		text-decoration: underline;
-	}
-
 	.retweet-button {
 		padding: 8px 16px;
 		border: none;
@@ -215,15 +208,5 @@
 
 	.retweet-button:active {
 		background-color: #0675bd;
-	}
-
-	/* Combine with .retweet-link */
-	.retweet-link {
-		color: #fff;
-		text-decoration: none;
-	}
-
-	.retweet-link:hover {
-		text-decoration: underline;
 	}
 </style>
