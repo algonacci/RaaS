@@ -7,7 +7,7 @@
 
 	const handleSubmit = async () => {
 		const inputLink = document.getElementById('link-input').value;
-		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[^?/]+\/status\/(\d+)/;
+		// const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[^?/]+\/status\/(\d+)/;
 		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/\w{4,}\/status\/(\d+)/;
 
 		// const resMid = await fetch(`/.netlify/functions/payment`, {
