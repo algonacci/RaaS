@@ -8,12 +8,12 @@ exports.handler = function (event, context, callback) {
 	};
 
 	const snap = new Midtrans.Snap({
-		isProduction: true,
-		clientKey: process.env.MIDTRANS_CLIENT_KEY,
-		serverKey: process.env.MIDTRANS_SERVER_KEY
+		isProduction: false,
+		clientKey: 'SB-Mid-client-4D6Sjyqb_V6nLMTS',
+		serverKey: 'SB-Mid-server-9aIT88K9ON8u0DZRTcoYZHG-'
 	});
 
-	const { id, name, email, amount, donation } = JSON.parse(event.body);
+	const { name, email, amount, donation } = JSON.parse(event.body);
 
 	const names = name.split(' ');
 	let first_name, last_name;
@@ -28,7 +28,7 @@ exports.handler = function (event, context, callback) {
 
 	const parameters = {
 		transaction_details: {
-			order_id: `Freeducation-${id}-${+new Date()}`,
+			order_id: `RaaS-$-${+new Date()}`,
 			gross_amount: parseInt(amount),
 			donation
 		},
