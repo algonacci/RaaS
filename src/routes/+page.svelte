@@ -10,6 +10,7 @@
 		// const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[^?/]+\/status\/(\d+)/;
 		// const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/\w{4,}\/status\/(\d+)/;
 		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[a-zA-Z0-9_]{4,}\/status\/\d{17}$/;
+		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[a-zA-Z0-9_]{4,}\/status\/\d{16,}$/;
 
 		// const resMid = await fetch(`/.netlify/functions/payment`, {
 		// 	method: 'POST',
