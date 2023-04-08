@@ -62,15 +62,14 @@
 		<p>👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇 👇</p>
 		{#each retweets as retweet}
 			<div class="retweet-container">
-				<a href={retweet.link} target="_blank" rel="noopener" class="retweet-link">{retweet.link}</a
-				>
-				<a
-					href={`https://twitter.com/intent/retweet?tweet_id=${retweet.tweetId}`}
-					target="_blank"
-					rel="noopener"
-					class="retweet-button">Retweet</a
-				>
-			</div>
+			      <p><a href={retweet.link} target="_blank" rel="noopener">{retweet.link}</a></p>
+			      <a
+				class="retweet-button"
+				href={retweet.link.includes('/status/') ? `https://twitter.com/intent/retweet?tweet_id=${retweet.link.split('/status/')[1]}` : '#'}
+				target="_blank"
+				rel="noopener"
+			      >Retweet</a>
+    			</div>
 		{/each}
 	</div>
 </div>
