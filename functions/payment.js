@@ -25,7 +25,7 @@ exports.handler = async function (event, context) {
 			const { token, redirect_url } = transaction;
 			console.log(`Token: ${token}`);
 			console.log(`Redirect URL: ${redirect_url}`);
-			console.log(donation);
+
 			callback(null, {
 				statusCode: 200,
 				headers,
