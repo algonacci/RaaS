@@ -4,8 +4,8 @@ exports.handler = async function (event, context) {
 	// initialize Midtrans client
 	const midtrans = new Midtrans({
 		isProduction: false,
-		clientKey: 'YOUR_MIDTRANS_CLIENT_KEY',
-		serverKey: 'YOUR_MIDTRANS_SERVER_KEY'
+		clientKey: 'SB-Mid-client-4D6Sjyqb_V6nLMTS',
+		serverKey: 'SB-Mid-server-9aIT88K9ON8u0DZRTcoYZHG-'
 	});
 
 	// get user data from request body
