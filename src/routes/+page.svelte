@@ -7,28 +7,37 @@
 
 	const handleSubmit = async () => {
 		const inputLink = document.getElementById('link-input').value;
-		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[^?#\/]+\/status\/(\d+)$/;
+		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[^?/]+\/status\/(\d+)/;
 
 		if (twitterRegex.test(inputLink)) {
-			const tweetId = inputLink.match(twitterRegex)[2];
-
 			try {
 				const retweetsCollectionRef = collection(db, 'retweets');
 				await addDoc(retweetsCollectionRef, {
-					link: `https://twitter.com/i/web/status/${tweetId}`,
-					tweetId,
+					link: `https://twitter.com/${inputLink.match(/twitter\.com\/(.+?)\/status/)[1]}/status/${
+						inputLink.match(twitterRegex)[2]
+					}`,
 					createdAt: new Date()
 				});
 
 				alert('Retweet added');
+				document.getElementById('link-input').value = '';
+				retweets = [];
+				const querySnapshot = await getDocs(retweetsCollectionRef);
+				querySnapshot.forEach((doc) => {
+					const retweet = {
+						id: doc.id,
+						...doc.data()
+					};
+
+					retweets = [...retweets, retweet];
+				});
+				retweets.sort((a, b) => b.createdAt - a.createdAt);
 			} catch (error) {
 				console.error('Error adding Retweet:', error);
 				alert('Error adding Retweet');
 			}
 		} else {
-			alert(
-				`Please enter a valid Twitter link. Make sure it contains the tweet id and not include the query parameters after '?'`
-			);
+			alert('Please enter a valid Twitter link');
 		}
 	};
 
@@ -58,7 +67,7 @@
 	<h2>Retweet as a Service</h2>
 	<form on:submit|preventDefault={handleSubmit}>
 		<label for="link-input">Link:</label>
-		<input type="text" id="link-input" name="link-input" />
+		<input type="text" id="link-input" name="link-input" required />
 		<button type="submit">Submit</button>
 	</form>
 
