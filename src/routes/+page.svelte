@@ -11,6 +11,19 @@
 
 		if (twitterRegex.test(inputLink)) {
 			try {
+				const resMid = await fetch(`/.netlify/functions/payment`, {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json'
+					},
+					body: JSON.stringify({
+						id: 1,
+						amount: 10000
+					})
+				});
+				const midtransData = await resMid.json();
+				console.log(midtransData);
+				window.location.href = midtransData.url;
 				const retweetsCollectionRef = collection(db, 'retweets');
 				await addDoc(retweetsCollectionRef, {
 					link: `https://twitter.com/${inputLink.match(/twitter\.com\/(.+?)\/status/)[1]}/status/${
