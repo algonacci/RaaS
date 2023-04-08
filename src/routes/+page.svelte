@@ -9,19 +9,19 @@
 		const inputLink = document.getElementById('link-input').value;
 		const twitterRegex = /^https?:\/\/(www\.)?twitter\.com\/[^?/]+\/status\/(\d+)/;
 
-		const resMid = await fetch(`/.netlify/functions/payment`, {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify({
-				id: 1,
-				amount: 10000
-			})
-		});
-		const midtransData = await resMid.json();
-		console.log(midtransData);
-		window.location.href = midtransData.url;
+		// const resMid = await fetch(`/.netlify/functions/payment`, {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'content-type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({
+		// 		id: 1,
+		// 		amount: 10000
+		// 	})
+		// });
+		// const midtransData = await resMid.json();
+		// console.log(midtransData);
+		// window.location.href = midtransData.url;
 
 		if (twitterRegex.test(inputLink)) {
 			try {
