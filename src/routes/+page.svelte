@@ -15,13 +15,12 @@
 				'content-type': 'application/json'
 			},
 			body: JSON.stringify({
-				id: 1,
 				amount: 10000
 			})
 		});
 		const midtransData = await resMid.json();
 		console.log(midtransData);
-		window.location.href = midtransData.url;
+		window.location.href = midtransData.redirectUrl;
 
 		if (twitterRegex.test(inputLink)) {
 			try {
