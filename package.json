@@ -19,6 +19,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"firebase": "^9.19.1"
+		"firebase": "^9.19.1",
+		"midtrans-client": "^1.3.1"
 	}
 }
